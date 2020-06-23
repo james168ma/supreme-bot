@@ -58,6 +58,7 @@ keys = [
 	{
 	  <create the same amount of key lists as num_items you specified above>
 	}
+]
 ```
 An example `config.py` file for reference:
 ```
@@ -101,7 +102,7 @@ keys = [
             "exp_year": 4, # 2023
             "cvv": 111
 	}
-}
+]
 
 ```
 
