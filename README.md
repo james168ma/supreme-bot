@@ -58,13 +58,13 @@ keys = {
         "email": "johndoesemail@johndoe.com",
         "phone": 1234567890,
         "address": "1010 John Doe Way",
-        "zip": 00001,
+        "zip": 11111,
         "city": "Los Angeles",
         "state": 6, # California
         "cc_number": 123456789,
         "exp_month": 1, # January
         "exp_year": 4, # 2023
-        "cvv": 001
+        "cvv": 111
 }
 
 ```
