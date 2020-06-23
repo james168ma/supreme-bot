@@ -16,7 +16,7 @@ source venv/bin/activate
 pip install selenium
 deactivate
 ```
-5. Download your chromedriver from [here](http://chromedriver.chromium.org/downloads)
+5. Download your chromedriver for your OS and version from [here](http://chromedriver.chromium.org/downloads), move it into the current directory, and unzip it with: `unzip <zip file>`
 6. Create your `config.py` file:
 
 ```
