@@ -4,6 +4,11 @@ A bot to cop Supreme items.
 Spun off of [this](https://youtu.be/AGpKm0pdTMM) YouTube tutorial.
 
 ---
+# Prerequisites
+1. Make sure you have Python3 installed. [Here](https://realpython.com/installing-python/) is a guide.
+2. Make sure you have virtualenv installed. [Here](https://virtualenv.pypa.io/en/stable/installation.html) is a guide.
+
+---
 # Setting up:
 
 1. Open up terminal
