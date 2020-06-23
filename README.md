@@ -11,7 +11,7 @@ Spun off of [this](https://youtu.be/AGpKm0pdTMM) YouTube tutorial.
 3. Go into the repo
 4. Run these commands:
 ```
-virtualenv venv --python=python3.8.2
+virtualenv venv --python=python3.7.3
 source venv/bin/activate
 pip install selenium
 deactivate
@@ -74,13 +74,13 @@ keys = [
             "email": "johndoesemail@johndoe.com",
             "phone": 1234567890,
             "address": "1010 John Doe Way",
-            ""zip": 11111,
-            ""city": "Los Angeles",
-            ""state": 6, # California
-            ""cc_number": 123456789,
-            ""exp_month": 1, # January
-            ""exp_year": 4, # 2023
-            ""cvv": 111
+            "zip": 11111,
+            "city": "Los Angeles",
+            "state": 6, # California
+            "cc_number": 123456789,
+            "exp_month": 1, # January
+            "exp_year": 4, # 2023
+            "cvv": 111
 	},
 	{
             "specific_url": None,
@@ -93,13 +93,13 @@ keys = [
             "email": "johndoesemail@johndoe.com",
             "phone": 1234567890,
             "address": "1010 John Doe Way",
-            ""zip": 11111,
-            ""city": "Los Angeles",
-            ""state": 6, # California
-            ""cc_number": 123456789,
-            ""exp_month": 1, # January
-            ""exp_year": 4, # 2023
-            ""cvv": 111
+            "zip": 11111,
+            "city": "Los Angeles",
+            "state": 6, # California
+            "cc_number": 123456789,
+            "exp_month": 1, # January
+            "exp_year": 4, # 2023
+            "cvv": 111
 	}
 }
 
