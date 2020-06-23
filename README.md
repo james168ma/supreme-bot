@@ -1,7 +1,8 @@
 # Bot for Supreme
----
+
 A bot to cop Supreme items.
 Spun off of [this](https://youtu.be/AGpKm0pdTMM) YouTube tutorial.
+
 ---
 # Setting up:
 
@@ -27,6 +28,8 @@ keys = {
         "item_type": "<type>" || None,
         "item_name": "<name>",
         "style": "<style>",
+
+	# fill these with your own
         "name": "<name>",
         "email": "<email>",
         "phone": <phone>,
@@ -45,6 +48,6 @@ keys = {
 ---
 # Run it
 ```
-python bot.py
+python3 bot.py
 ```
 
