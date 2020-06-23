@@ -41,7 +41,7 @@ keys = {
         "state": <state_number>,
         "cc_number": <card_number>,
         "exp_month": <month_number>, # 1 is January, 12 is December
-        "exp_year": <year_number>, # 1 is this year, 10 is this year + 10
+        "exp_year": <year_number>, # 1 is this year, 11 is this year + 10
         "cvv": <cvv_number>
 }
 ```
