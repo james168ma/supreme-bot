@@ -11,7 +11,7 @@ Spun off of [this](https://youtu.be/AGpKm0pdTMM) YouTube tutorial.
 3. Go into the repo
 4. Run these commands:
 ```
-virtualenv venv --python=python3.7.3
+virtualenv venv --python=python3
 source venv/bin/activate
 pip install selenium
 deactivate
