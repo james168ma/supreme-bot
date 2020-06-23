@@ -45,6 +45,30 @@ keys = {
         "cvv": <cvv_number>
 }
 ```
+An example `config.py` file for reference:
+```
+keys = {
+        "specific_url": None,
+        "url": "https://www.supremenewyork.com/shop/all/",
+        "item_number": None,
+        "item_type": "jackets",
+        "item_name": "Raglan Court Jacket",
+        "style": "Olive",
+        "name": "John Doe",
+        "email": "johndoesemail@johndoe.com",
+        "phone": 1234567890,
+        "address": "1010 John Doe Way",
+        "zip": 00001,
+        "city": "Los Angeles",
+        "state": 6, # California
+        "cc_number": 123456789,
+        "exp_month": 1, # January
+        "exp_year": 4, # 2023
+        "cvv": 001
+}
+
+```
+
 ---
 # Run it
 ```
