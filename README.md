@@ -12,8 +12,8 @@ Spun off of [this](https://youtu.be/AGpKm0pdTMM) YouTube tutorial.
 # Setting up:
 
 1. Open up terminal
-2. Clone this repo
-3. Go into the repo
+2. Clone this repo: `git clone https://github.com/james168ma/supreme-bot.git`
+3. Go into the repo: `cd supreme-bot`
 4. Run these commands:
 ```
 virtualenv venv --python=python3
