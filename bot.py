@@ -12,9 +12,6 @@ def timeme(method):
         return result
     return wrapper
 
-# will cookies improve load time?
-# options = webdriver.ChromeOptions()
-# options.add_argument('user-data-dir=www.supremenewyork.com')
 
 @timeme
 def order():
