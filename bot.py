@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from config import keys, num_items

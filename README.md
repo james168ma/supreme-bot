@@ -9,7 +9,13 @@ Spun off of [this](https://youtu.be/AGpKm0pdTMM) YouTube tutorial.
 1. Open up terminal
 2. Clone this repo
 3. Go into the repo
-4. Run: `pip install selenium`
+4. Run these commands:
+```
+virtualenv venv --python=python3.8.2
+source venv/bin/activate
+pip install selenium
+deactivate
+```
 5. Download your chromedriver from [here](http://chromedriver.chromium.org/downloads)
 6. Create your `config.py` file:
 
@@ -102,6 +108,11 @@ keys = [
 ---
 # Run it
 ```
-python3 bot.py
+source venv/bin/activate
+python bot.py
+```
+After you are done, run:
+```
+deactivate
 ```
 
