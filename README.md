@@ -15,8 +15,17 @@ Before the drop, it will switch to the Supreme website. Once the drop happens, b
 ## Setting up:
 
 1. Open up terminal
-2. Clone this repo: `git clone https://github.com/james168ma/supreme-bot.git`
-3. Go into the repo: `cd supreme-bot`
+
+2. Clone this repo: 
+```
+git clone https://github.com/james168ma/supreme-bot.git
+```
+
+3. Go into the repo: 
+```
+cd supreme-bot
+```
+
 4. Run these commands:
 ```
 virtualenv venv --python=python3
@@ -24,8 +33,18 @@ source venv/bin/activate
 pip install selenium
 deactivate
 ```
-5. Download your chromedriver for your OS and version from [here](http://chromedriver.chromium.org/downloads), move it into the current directory, and unzip it with: `unzip <zip file>`
-6. Create your `config.py` file:
+
+5. Download your chromedriver for your OS and version from [here](http://chromedriver.chromium.org/downloads), move it into the current directory, and unzip it with: 
+```
+unzip <zip file>
+```
+
+6. (optional) run this command to lower the chance of a reCaptcha: 
+```
+perl -pi -e 's/cdc_/dog_/g' chromedriver
+```
+
+7. Create your `config.py` file:
 
 ```
 num_items = <number of items you want>
