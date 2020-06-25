@@ -61,7 +61,7 @@ def order(driver):
     
                 delay = (order_time - dt.datetime.now()).total_seconds()
     
-                #time.sleep(delay)
+                time.sleep(delay)
             else:
                 time.sleep(time_delay)
             
@@ -157,14 +157,14 @@ if __name__ == '__main__':
     login = multiprocessing.Process(target=login, args=(driver, ))
 
     # login to google
-    #login.start()
+    login.start()
 
-    #login.join()
+    login.join()
 
     watcher = multiprocessing.Process(target=watch_videos, args=(driver, ))
 
     # watch youtube videos
-   # watcher.start()
+    watcher.start()
 
     order = multiprocessing.Process(target=order, args=(driver, ))
 
@@ -177,6 +177,6 @@ if __name__ == '__main__':
     )
 
     delay = (order_time - dt.datetime.now()).total_seconds()
-    #:=time.sleep(delay)
+    time.sleep(delay)
 
     order.start()
