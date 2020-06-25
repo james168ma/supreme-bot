@@ -3,6 +3,9 @@
 A bot to cop Supreme items.
 Spun off of [this](https://youtu.be/AGpKm0pdTMM) YouTube tutorial.
 
+When you run the bot, it will login to google for you, and watch YouTube videos in order to get an easier reCaptcha.
+Before the drop, it will switch to the Supreme website. Once the drop happens, be ready to do the reCaptcha quickly.
+
 ---
 ## Prerequisites
 1. Make sure you have Python3 installed. [Here](https://realpython.com/installing-python/) is a guide.
