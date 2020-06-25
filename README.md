@@ -158,3 +158,4 @@ deactivate
 1. Find out what items you want to cop ahead of time (through EU store)
 2. Cop multiple, semi-popular items (sell out at ~60s)
 3. Run the bot at least 40 minutes before the drop time
+4. Minimize the YouTube video, but open it back up before the drop
