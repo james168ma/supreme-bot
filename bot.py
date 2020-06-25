@@ -112,7 +112,6 @@ def order(driver):
     time.sleep(time_delay)
     driver.find_element_by_class_name('button.checkout').click()
 
-    index = 0
     # fill out checkout screen fields
      
     # name
