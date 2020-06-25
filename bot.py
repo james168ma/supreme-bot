@@ -8,6 +8,7 @@ import time
 import datetime as dt
 import multiprocessing
 
+
 def timeme(method):
     def wrapper(*args, **kw):
         startTime = int(round(time.time() * 1000))
@@ -16,6 +17,7 @@ def timeme(method):
         print('order ran in:', (endTime - startTime)/1000, 's')
         return result
     return wrapper
+
 
 def login(driver):
     driver.get('https://accounts.google.com')
@@ -26,6 +28,7 @@ def login(driver):
     # password
     driver.find_element_by_xpath('//*[@id="password"]/div[1]/div/div[1]/input').send_keys(google_creds["password"])
     driver.find_element_by_xpath('//*[@id="passwordNext"]/div/span/span').click()
+
 
 def watch_videos(driver):
     urls = [
