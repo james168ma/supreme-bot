@@ -3,3 +3,5 @@ config.py
 chromedriver
 venv
 chromeddriver
+Captcha-Solver
+Recaptcha-V3-Harvester
