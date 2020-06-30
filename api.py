@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from config import num_items, time_delay, supreme_url, google_creds, drop_timing, payment, items 
 import requests
 from time import sleep
@@ -96,7 +97,7 @@ def choose_style(id_code, style, size):
 
 
 def add_to_cart(style, size, id_code):
-    payload = { "st" : style, "s" : size, "h" : 1 }
+    payload = { "st" : style, "s" : size, "h" : 1, 'authenticity_token' : 'OzXIIphfYUIsZcLzjBxynbxHXeARzoxs7v/l9bE5g01NdH2ULEwTLAWfiBQKL0mcOduHJEdS69Z+TGioKn+Eug==', 'utf8' : '✓' }
     req = requests.post(supreme_add_url.format(id_code), params=payload, headers=headers_mobile)
     print(req.content)
     return dict(req.cookies)
@@ -127,7 +128,7 @@ class Browser:
     def close_browser(self):
         self.driver.close()
 
-    def checkout(self):
+    def checkout(self, token):
         self.driver.get('https://www.supremenewyork.com/checkout')
         sleep(1)
         while 'SHIPPING / PAYMENT' not in self.driver.page_source :
@@ -157,9 +158,10 @@ class Browser:
         # Submit
         self.driver.find_element_by_xpath('//*[@id="cart-cc"]/fieldset/p[2]/label/div/ins').click()
         self.driver.find_element_by_xpath('//*[@id="pay"]/input').click()
+        self.captcha(token)
 
     def captcha(self, token):
-        captcha_entry = self.driver.execute_script("document.getElementById('g-recaptcha-response').setAttribute('value','{}');".format(input('enter captcha')))
+        captcha_entry = self.driver.execute_script("document.getElementById('g-recaptcha-response').setAttribute('value','{}');".format(token))
 
     def add_cookie(self, cookie):
         self.driver.get('https://www.supremenewyork.com')
@@ -167,19 +169,19 @@ class Browser:
             self.driver.add_cookie({'name': x, 'value': y})
 
 if __name__ == '__main__':
-    #item_id = find_item(item_category, item_name)
-    #print('item:', item_id, '\n')
-    #info = choose_style(item_id, item_style, item_size)
-    #print('info:', info, '\n')
-    #cookie = add_to_cart(info['style_id'], info['size_id'], item_id)
-    #print('cookie', cookie, '\n')
+    item_id = find_item(item_category, item_name)
+    print('item:', item_id, '\n')
+    info = choose_style(item_id, item_style, item_size)
+    print('info:', info, '\n')
+    cookie = add_to_cart(info['style_id'], info['size_id'], item_id)
+    print('cookie', cookie, '\n')
     token = get_captcha_token()
     print(token)
 
     bot = Browser()
     #bot.add_cookie(cookie)
     sleep(10)
-    bot.checkout()
-    bot.captcha(token)
+    bot.checkout(token)
+    #bot.captcha(token)
 
 
