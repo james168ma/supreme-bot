@@ -5,3 +5,4 @@ venv
 chromeddriver
 Captcha-Solver
 Recaptcha-V3-Harvester
+sample.py
