@@ -94,6 +94,8 @@ items = [
             "item_type": "<type>" || None,
             "item_name": "<name>",
             "style": "<style>",
+	    # fill out size of item or None if item doesn't have sizing or you want random size
+	    "size": "<size>" || None
 	},
 	{
 	  <another item key here following the same format>
@@ -141,21 +143,24 @@ items = [
         "item_number": None,
         "item_type": "shorts",
         "item_name": "Nylon Water Short",
-        "style": "Teal Floral"
+        "style": "Teal Floral",
+	"size": "Medium"
     },
     {
         "specific_url": None,
         "item_number": 8, # first item on second row of /shop/all page
         "item_type": None,
         "item_name": None,
-        "style": None
+        "style": None,
+	"size": None
     },
     {
         "specific_url": "https://www.supremenewyork.com/shop/bags/dsd01krb8/bm4bz35rx",
         "item_number": None,
         "item_type": None,
         "item_name": None,
-        "style": None
+        "style": None,
+	"size": None
     }
 ]
 ```
