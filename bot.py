@@ -8,6 +8,9 @@ import time
 import datetime as dt
 import multiprocessing
 
+test_minute_1 = 50 # 50
+test_minute_2 = 0 # 0
+test_second = 0 # 0
 
 def timeme(method):
     def wrapper(*args, **kw):
@@ -59,12 +62,15 @@ def order(driver):
                     drop_timing['year'], 
                     drop_timing['month'], 
                     drop_timing['date'],
-                    drop_timing['hour']
+                    drop_timing['hour'],
+                    test_minute_2,
+                    test_second
                 )
     
                 delay = (order_time - dt.datetime.now()).total_seconds()
-    
-                time.sleep(delay)
+
+                if delay > 0: 
+                    time.sleep(delay)
             else:
                 time.sleep(time_delay)
             
@@ -104,6 +110,14 @@ def order(driver):
                     except NoSuchElementException:
                         continue
 
+            # if sizing provided
+            if items[index]['size']:
+                # select sizing if available
+                try:
+                    driver.find_element_by_xpath('//*[text()="{}"]'.format(items[index]['size'])).click()
+                except:
+                    # sizing not available so default to available option
+                    index = index # do nothing
             # add to cart
             driver.find_element_by_name('commit').click()
             index += 1
@@ -175,7 +189,7 @@ if __name__ == '__main__':
             drop_timing['month'], 
             drop_timing['date'],
             drop_timing['hour'] - 1,
-            50
+            test_minute_1
     )
 
     delay = (order_time - dt.datetime.now()).total_seconds()
