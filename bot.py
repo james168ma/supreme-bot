@@ -71,8 +71,10 @@ def order(driver):
 
                 if delay > 0: 
                     time.sleep(delay)
+                else:
+                    time.sleep(1)
             else:
-                time.sleep(time_delay)
+                time.sleep(1)
             
             # ordering if you already have the specific url ready
             if items[index]['specific_url'] != None:
