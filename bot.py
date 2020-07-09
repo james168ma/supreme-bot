@@ -24,27 +24,19 @@ SOFTWARE.
 
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-from config import num_items, time_delay, supreme_url, google_creds, drop_timing, payment, items 
+from config import num_items, time_delay, supreme_url, google_creds, drop_timing, payment, items
 from random import randint
 import time
 import datetime as dt
 import multiprocessing
+import sys
 
 test_minute_1 = 50 # 50
 test_minute_2 = 0 # 0
 test_second = 0 # 0
 
-def timeme(method):
-    def wrapper(*args, **kw):
-        startTime = int(round(time.time() * 1000))
-        result = method(*args, **kw)
-        endTime = int(round(time.time() * 1000))
-        print('order ran in:', (endTime - startTime)/1000, 's')
-        return result
-    return wrapper
-
-
 def login(driver):
+    sys.stdout.write(" logging into google...\n")
     driver.get('https://accounts.google.com')
     # username
     driver.find_element_by_xpath('//*[@id="identifierId"]').send_keys(google_creds["account"])
@@ -53,15 +45,17 @@ def login(driver):
     # password
     driver.find_element_by_xpath('//*[@id="password"]/div[1]/div/div[1]/input').send_keys(google_creds["password"])
     driver.find_element_by_xpath('//*[@id="passwordNext"]/div/span/span').click()
+    sys.stdout.write(" finished logging into google.\n\n")
 
 
 def watch_videos(driver):
     urls = [
             'https://www.youtube.com/watch?v=W9q1Q74CTg4',
             'https://www.youtube.com/watch?v=FuPc1lifeLQ',
-            'https://www.youtube.com/watch?v=VD7iZ3x8ahw', 
-            'https://www.youtube.com/watch?v=vQBH-LhJuOc' 
+            'https://www.youtube.com/watch?v=VD7iZ3x8ahw',
+            'https://www.youtube.com/watch?v=vQBH-LhJuOc'
            ]
+    sys.stdout.write(" watching random youtube video to lessen chance of captcha...\n do not close window\n")
     # random youtube vid
     driver.get(urls[randint(0,3)])
     time.sleep(2*time_delay)
@@ -73,31 +67,33 @@ def watch_videos(driver):
         return
 
 
-@timeme
 def order(driver):
+    sys.stdout.write("\n preparing for order...\n")
     index = 0
     while index < num_items:
         try:
             if index == 0:
                 driver.get(supreme_url)
                 order_time = dt.datetime(
-                    drop_timing['year'], 
-                    drop_timing['month'], 
+                    drop_timing['year'],
+                    drop_timing['month'],
                     drop_timing['date'],
-                    drop_timing['hour'],
+                    drop_timing['hour'] - 1,
                     test_minute_2,
                     test_second
                 )
-    
+
                 delay = (order_time - dt.datetime.now()).total_seconds()
 
-                if delay > 0: 
+                if delay > 0:
                     time.sleep(delay)
+                    sys.stdout.write(" ordering...\n")
+                    start_time = int(round(time.time() * 1000))
                 else:
                     time.sleep(1)
             else:
                 time.sleep(1)
-            
+
             # ordering if you already have the specific url ready
             if items[index]['specific_url'] != None:
                 driver.get(items[index]['specific_url'])
@@ -154,7 +150,7 @@ def order(driver):
     driver.find_element_by_class_name('button.checkout').click()
 
     # fill out checkout screen fields
-     
+
     # name
     driver.find_element_by_xpath('//*[@id="order_billing_name"]').send_keys(payment['name'])
     # email
@@ -182,9 +178,45 @@ def order(driver):
 
     # process payment
     driver.find_element_by_name('commit').click()
-    
+    sys.stdout.write(" enter your captcha response...\n\n")
+
+    end_time = int(round(time.time() * 1000))
+    sys.stdout.write(' order ran in: {} s\n'.format((end_time - start_time)/1000))
+
 
 if __name__ == '__main__':
+    sys.stdout.write("""
+ --------------------------------------------
+
+    MIT License
+
+    Copyright (c) 2020 James Ma
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+ --------------------------------------------
+ supreme-bot v.1.0.0
+ --------------------------------------------
+
+
+""")
+
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--mute-audio')
     # chrome_options.add_argument('--headless')
@@ -193,7 +225,7 @@ if __name__ == '__main__':
 
     # load chrome(s)
     driver = webdriver.Chrome('./chromedriver', options=chrome_options)
-    
+
     login = multiprocessing.Process(target=login, args=(driver, ))
 
     # login to google
@@ -209,8 +241,8 @@ if __name__ == '__main__':
     order = multiprocessing.Process(target=order, args=(driver, ))
 
     order_time = dt.datetime(
-            drop_timing['year'], 
-            drop_timing['month'], 
+            drop_timing['year'],
+            drop_timing['month'],
             drop_timing['date'],
             drop_timing['hour'] - 1,
             test_minute_1
